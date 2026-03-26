@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Summary</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="container">
+    <div class="result-box">
+        <h1>Order Summary 🧾</h1>
+
+    
+        <table class="bill-table">
+            <tr>
+                <th>Item</th>
+                <th>Qty</th>
+                <th>Price</th>
+            </tr>
+
+            {% for item, qty in cart.items() %}
+            <tr>
+                <td>{{ item }}</td>
+                <td>{{ qty }}</td>
+                <td>Rs {{ qty * menu[item] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        
+        <h2>Total Bill: Rs {{ total }}</h2>
+<p class="thank-msg">Thank you for visiting :)</p>
+
+        
+        <a href="/" class="back-btn"> Back to Menu</a>
+    </div>
+</div>
+
+</body>
+</html>

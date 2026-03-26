@@ -1,0 +1,261 @@
+/* RESET */
+* {
+    box-sizing: border-box;
+}
+
+/* BODY */
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Arial;
+    padding-top: 80px;
+    padding-bottom: 100px;
+    text-align: center;
+
+    background-image: url("https://images.unsplash.com/photo-1504674900247-0877df9cc836");
+    background-size: cover;
+    background-position: center;
+
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* OVERLAY */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: -1;
+}
+
+/* CONTAINER */
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* MENU GRID */
+.menu-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 1000px;
+    margin: auto;
+    padding-bottom: 120px;
+}
+
+/* CARD */
+.card {
+    background: rgb(41, 34, 34);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.08);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+/* INFO */
+.info {
+    padding: 10px;
+    background: #9b8190;
+    color: white;
+}
+
+/* BUTTONS */
+.add-btn {
+    padding: 8px 15px;
+    background: #ff5722;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.add-btn:hover {
+    background: #e64a19;
+}
+
+.order-btn {
+    padding: 12px 25px;
+    background: green;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.clear-btn {
+    background: red;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+/* BOTTOM BAR */
+.bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    padding: 15px 25px;
+    z-index: 1000;
+}
+
+/* QUANTITY */
+.action-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.qty-box {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.qty-box button {
+    background: #ff5722;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.qty {
+    width: 40px;
+    text-align: center;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+}
+
+/* RESULT BOX */
+.result-box {
+    background: #a13c3c;
+    padding: 30px;
+    border-radius: 15px;
+    color: black;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* TABLE */
+.bill-table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    width: 70%;
+    background: white;
+    color: black;
+    font-size: 18px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.bill-table th {
+    background: #9e003f;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+}
+
+.bill-table th,
+.bill-table td {
+    padding: 12px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+/* TOTAL */
+.result-box h2 {
+    font-size: 28px;
+    margin-top: 15px;
+}
+
+/* THANK MESSAGE */
+.thank-msg {
+    font-size: 22px;
+    color: #ffeb3b;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* BACK BUTTON */
+.back-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #00b894;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.back-btn:hover {
+    background: #019875;
+}
+
+/* NAVBAR */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+
+.logo {
+    color: #9c452f;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: rgb(136, 118, 118);
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    color: #ff7f5fcd;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .menu-container {
+        grid-template-columns: 1fr;
+    }
+}

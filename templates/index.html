@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Python Cafe</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div>
+    
+    <nav class="navbar">
+        <div class="logo">🍽️ Python Café | Where Taste Meets Code</div>
+
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Menu</a></li>
+            <li><a href="#">Order</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    
+    <form method="POST" class="menu-container">
+
+        {% for item, price in menu.items() %}
+        <label class="card 
+        {% if item == 'Pizza' or item == 'Salad' or item == 'Juice' %}left-item
+        {% elif item == 'Pasta' or item == 'Coffee' or item == 'Chinese' %}center-item
+        {% else %}right-item{% endif %}">
+
+            <img src="{{ url_for('static', filename='images/' + item.lower().replace(' ', '') + '.jpg') }}">
+
+            <div class="info">
+
+                
+                <div class="action-row">
+
+                    <div class="qty-box">
+                        <button type="button" onclick="decrease('{{ item }}')">−</button>
+
+                        <input type="number"
+                               id="qty_{{ item }}"
+                               name="qty_{{ item }}"
+                               value="1"
+                               min="1"
+                               class="qty">
+
+                        <button type="button" onclick="increase('{{ item }}')">+</button>
+                    </div>
+
+                    <button type="submit"
+                            name="item"
+                            value="{{ item }}"
+                            class="add-btn">
+                        Add
+                    </button>
+
+                </div>
+
+                <h3>{{ item }}</h3>
+                <p>Rs {{ price }}</p>
+
+            </div>
+
+        </label>
+        {% endfor %}
+
+        
+        <div class="bottom-bar">
+            <button type="submit" name="order" value="1" class="order-btn">
+                Order Now
+            </button>
+
+            <a href="/clear" class="clear-btn">
+                Clear Cart
+            </a>
+        </div>
+
+    </form>
+
+</div>
+
+
+<script>
+function increase(item) {
+    let input = document.getElementById("qty_" + item);
+    input.value = parseInt(input.value) + 1;
+}
+
+function decrease(item) {
+    let input = document.getElementById("qty_" + item);
+    if (input.value > 1) {
+        input.value = parseInt(input.value) - 1;
+    }
+}
+</script>
+
+</body>
+</html>
